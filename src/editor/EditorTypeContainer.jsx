@@ -3,10 +3,6 @@ import PropTypes from 'prop-types'
 import EditorTypeRow from './EditorTypeRow'
 
 class EditorTypeContainer extends React.Component {
-	constructor() {
-		super()
-	}
-
 	render() {
 		return(
 			<div className="editor-container__editors column">

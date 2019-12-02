@@ -184,7 +184,7 @@ const rules = [
 			}
 		},
 		serialize(object, children) {
-			if(object.kind != 'inline') return
+			if(object.kind !== 'inline') return
 			switch(object.type) {
 			case 'link': {
 				const href = object.data.get('href')
@@ -192,18 +192,20 @@ const rules = [
 			}
 			case 'image': {
 				const src = object.data.get('src')
-				return <img src={src} />
+				return <img alt="" src={src} />
 			}
+			default : return
 			}
 		},
 	},
 	// handle marks
 	{
 		serialize(object, children) {
-			if(object.kind != 'mark') return
+			if(object.kind !== 'mark') return
 			switch(object.type) {
 			case 'bold': return <strong>{children}</strong>
 			case 'italic': return <em>{children}</em>
+			default : return
 			}
 		},
 		deserialize(el, next) {
@@ -387,7 +389,7 @@ class DefaultEditor extends React.Component {
 					.unwrapBlock('numbered-list')
 			} else if (isList) {
 				transform
-					.unwrapBlock(type == 'bulleted-list' ? 'numbered-list' : 'bulleted-list')
+					.unwrapBlock(type === 'bulleted-list' ? 'numbered-list' : 'bulleted-list')
 					.wrapBlock(type)
 			} else {
 				transform
@@ -586,7 +588,8 @@ class DefaultEditor extends React.Component {
 		return (
 			<Editor
 				className="content"
-				spellCheck
+				spellCheck={true}
+				autoCorrect={false}
 				state={this.state.state}
 				schema={schema}
 				onKeyDown={this.onKeyDown}

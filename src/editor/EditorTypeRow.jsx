@@ -31,10 +31,6 @@ let collect = (connect, monitor) => {
 }
 
 class EditorTypeRow extends React.Component {
-	constructor() {
-		super()
-	}
-
 	render() {
 		const { isOver, connectDropTarget } = this.props
 		let isOverCSS = isOver ? {border: '2px solid #a9c873' } : {}

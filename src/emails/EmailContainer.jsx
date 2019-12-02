@@ -151,7 +151,7 @@ export default class EmailContainer extends React.Component {
 
 	render() {
 		return (
-			<container className="emailContainer">
+			<div className="emailContainer">
 				<EmailControls
 					selectedCheckboxes={this.state.selectedCheckboxes}
 					refreshEmailList={this.refreshEmailList}
@@ -170,7 +170,7 @@ export default class EmailContainer extends React.Component {
 					selectedCheckboxes={this.state.selectedCheckboxes}
 					updateSelectedCheckboxes={this.updateSelectedCheckboxes}
 				/>
-			</container>
+			</div>
 		)
 	}
 }

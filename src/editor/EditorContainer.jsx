@@ -64,9 +64,8 @@ class EditorContainer extends React.Component {
 		this.getCategories()
 
 		// if we have an ID from react-router, make db call to get data
-		console.log(this.props)
 		if (this.props.match.params.id) {
-			this.getEmailContents(this.props.params.id)
+			this.getEmailContents(this.props.match.params.id)
 		}
 
 		//if we have no ID from react-router, create new email instance

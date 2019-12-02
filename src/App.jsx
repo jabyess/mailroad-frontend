@@ -40,8 +40,8 @@ class App extends React.Component {
 					<div className="container is-fluid">
 						<Switch>
 							<Route path="/" exact component={EmailContainer} />
+							<Route path="/editor/:id" component={EditorContainer} />
 							<Route path="/editor" component={EditorContainer} />
-							<Route path="/editor/:id" render={p => <EditorContainer {...p} />} />
 							<Route path="/admin" component={AdminContainer} />
 							<Route path="/media" component={MediaContainer} />
 							<Route path="/login" component={LoginContainer} />
