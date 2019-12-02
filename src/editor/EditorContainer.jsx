@@ -63,7 +63,8 @@ class EditorContainer extends React.Component {
 		this.getTemplates()
 		this.getCategories()
 
-		// //if we have an ID from react-router, make db call to get data
+		// if we have an ID from react-router, make db call to get data
+		console.log(this.props)
 		if (this.props.match.params.id) {
 			this.getEmailContents(this.props.params.id)
 		}

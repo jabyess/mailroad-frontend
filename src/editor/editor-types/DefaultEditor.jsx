@@ -37,7 +37,7 @@ const schema = {
 			const src = node.data.get('src')
 			const className = isFocused ? 'active' : null
 			return (
-				<span><img src={src} className={className} {...props.attributes} /></span>
+				<span><img alt="" src={src} className={className} {...props.attributes} /></span>
 			)
 		},
 		'link': props => {
@@ -113,7 +113,7 @@ const rules = [
 			}
 		},
 		serialize(object, children) {
-			if (object.kind != 'block') return
+			if (object.kind !== 'block') return
 			switch (object.type) {
 			case 'paragraph': return <p>{children}</p>
 			case 'heading-one': return <h1>{children}</h1>
@@ -138,9 +138,12 @@ const rules = [
 			}
 			case 'image' : {
 				const src = object.data.get('src')
-				return <img src={src} />
+				return <img alt="" src={src} />
 			}
+			default :
+			return <p>{children}</p>
 			}
+
 		}
 	},
 	{
@@ -249,7 +252,7 @@ class DefaultEditor extends React.Component {
 		}
 		let content = html.deserialize(nextProps.content)
 		this.setState(() => {
-			this.state.state = content
+			return {state : content}
 		})
 	}
 
@@ -273,7 +276,7 @@ class DefaultEditor extends React.Component {
 
 	hasMark(type) {
 		const { state } = this.state
-		return state.marks.some(mark => mark.type == type)
+		return state.marks.some(mark => mark.type === type)
 	}
 
 	/**
@@ -285,7 +288,7 @@ class DefaultEditor extends React.Component {
 
 	hasBlock(type) {
 		const { state } = this.state
-		return state.blocks.some(node => node.type == type)
+		return state.blocks.some(node => node.type === type)
 	}
 
 	/**
@@ -354,7 +357,7 @@ class DefaultEditor extends React.Component {
 		const { document } = state
 
 		// Handle everything but list buttons.
-		if (type != 'bulleted-list' && type != 'numbered-list') {
+		if (type !== 'bulleted-list' && type !== 'numbered-list') {
 			const isActive = this.hasBlock(type)
 			const isList = this.hasBlock('list-item')
 
@@ -374,7 +377,7 @@ class DefaultEditor extends React.Component {
 		else {
 			const isList = this.hasBlock('list-item')
 			const isType = state.blocks.some((block) => {
-				return !!document.getClosest(block.key, parent => parent.type == type)
+				return !!document.getClosest(block.key, parent => parent.type === type)
 			})
 
 			if (isList && isType) {
@@ -477,7 +480,7 @@ class DefaultEditor extends React.Component {
 	}
 
 	onPaste(e, data, state) {
-		if (data.type != 'html') return
+		if (data.type !== 'html') return
 		if (data.isShift) return
 
 		const { document } = html.deserialize(data.html)

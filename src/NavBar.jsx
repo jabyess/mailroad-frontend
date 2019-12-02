@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class NavBar extends React.Component {
 	render() {
@@ -8,9 +8,9 @@ class NavBar extends React.Component {
 			<div className="nav navbar has-shadow">
 				<div className="nav-left">
 					<NavLink className="nav-item is-tab" activeClassName="is-active" to="/">Home</NavLink>
-					<Link className="nav-item is-tab" activeClassName="is-active" to="/editor">Create Email</Link>
-					<Link className="nav-item is-tab" activeClassName="is-active" to="/admin">Admin</Link>
-					<Link className="nav-item is-tab" activeClassName="is-active" to="/media">Media</Link>
+					<NavLink className="nav-item is-tab" activeClassName="is-active" to="/editor">Create Email</NavLink>
+					<NavLink className="nav-item is-tab" activeClassName="is-active" to="/admin">Admin</NavLink>
+					<NavLink className="nav-item is-tab" activeClassName="is-active" to="/media">Media</NavLink>
 				</div>
 				<div className="nav-item loading"></div>
 				<div className="nav-right">
