@@ -567,14 +567,14 @@ class DefaultEditor extends React.Component {
 	renderToolbar() {
 		return (
 			<div className="slate-editor__toolbar">
-				{this.renderMarkButton('bold', 'format_bold')}
-				{this.renderMarkButton('italic', 'format_italic')}
-				{this.renderBlockButton('heading-one', 'looks_one')}
-				{this.renderBlockButton('heading-two', 'looks_two')}
-				{this.renderBlockButton('numbered-list', 'format_list_numbered')}
-				{this.renderBlockButton('bulleted-list', 'format_list_bulleted')}
-				{this.renderLinkButton('link', 'link')}
-				{this.renderImageButton('image', 'image')}
+				{this.renderMarkButton('bold', 'b')}
+				{this.renderMarkButton('italic', 'i')}
+				{this.renderBlockButton('heading-one', 'h1')}
+				{this.renderBlockButton('heading-two', 'h2')}
+				{this.renderBlockButton('numbered-list', 'ol')}
+				{this.renderBlockButton('bulleted-list', 'ul')}
+				{this.renderLinkButton('link', 'a')}
+				{this.renderImageButton('image', 'img')}
 			</div>
 		)
 	}
